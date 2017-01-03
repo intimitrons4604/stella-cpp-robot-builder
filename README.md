@@ -10,7 +10,7 @@ If you're feeling brave, try running it in a very large area or with the chassis
 In autonomous mode, Stella will continuously drive straight forward with the motors at half power. This is done by the `AutonomousDriveStraight` command, with a `speed` parameter of `0.5`.
 
 # Teleoperated Mode
-In teleoperated mode, you can drive Stella using the left stick. The y-axis controls straight motion, and the x-axis controls turning. There is an axial deadzone applied to each axes inputs. The turbo button is the right bumper (labelled RB). This driving is performed by the `JoystickDrive` command - the default command for the Drivetrain subsystem.
+In teleoperated mode, you can drive Stella using the left stick. The y-axis controls straight motion, and the x-axis controls turning. There is an axial deadzone applied to each axes' input values. The turbo button is the right bumper (labelled RB). This driving is performed by the `JoystickDrive` command - the default command for the Drivetrain subsystem.
 
 If you hold down the X button, Stella will rotate counter-clockwise in place with the motors at one quarter power as long as you are holding the button. If you hold down the B button, Stella will do the same thing, this time rotating clockwise. The rotation is performed by the `RotateInPlace` command, with differing values for the `counterClockWise` parameter, and the same value for the `rotationRate` parameter.
 
