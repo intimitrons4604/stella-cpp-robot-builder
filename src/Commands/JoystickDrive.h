@@ -44,8 +44,8 @@ private:
 
 	// Left stick, Y-axis on Xbox controller
 	static constexpr uint32_t STRAIGHT_AXIS_NUMBER = 1;
-	// Right stick, X-axis on Xbox controller
-	static constexpr uint32_t TURN_AXIS_NUMBER = 4;
+	// Left stick, X-axis on Xbox controller
+	static constexpr uint32_t TURN_AXIS_NUMBER = 0;
 	// Right bumper on Xbox controller (RB)
 	static constexpr uint32_t TURBO_BUTTON_NUMBER = 6;
 
