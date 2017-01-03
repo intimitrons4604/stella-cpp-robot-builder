@@ -43,3 +43,16 @@ void Drivetrain::InitDefaultCommand() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
+void Drivetrain::Drive(float straightValue, float turnValue, bool turbo) {
+    /*
+     * Invert turbo setting to get squaredInputs value
+     * Squaring the inputs results in a power output which is less than
+     * the input value, except at -1, 0, and 1 - where they are equal.
+     * Graph f(x) = x^2, g(x) = -(x^2), and h(x) = x to see this visually.
+     */
+    robotDrive->ArcadeDrive(straightValue, turnValue, !turbo);
+}
+
+void Drivetrain::StopMotors() {
+    robotDrive->StopMotor();
+}
