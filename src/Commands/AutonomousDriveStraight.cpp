@@ -25,26 +25,31 @@ AutonomousDriveStraight::AutonomousDriveStraight(double speed): Command() {
 
 // Called just before this Command runs the first time
 void AutonomousDriveStraight::Initialize() {
-
+    drivetrain = Robot::drivetrain;
 }
 
 // Called repeatedly when this Command is scheduled to run
 void AutonomousDriveStraight::Execute() {
-
+    // Drive forward or backward with set speed - no turning
+    // Enable turbo so motor output is exactly the input speed and not scaled
+    drivetrain->Drive(m_speed, 0, true);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool AutonomousDriveStraight::IsFinished() {
+    // We would like the autonomous command to remain scheduled
+    // We cannot simply run it once, as motor safety will shut off the motors
+    // if we are not updating them within the timeout
     return false;
 }
 
 // Called once after isFinished returns true
 void AutonomousDriveStraight::End() {
-
+    drivetrain->StopMotors();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void AutonomousDriveStraight::Interrupted() {
-
+    End();
 }
