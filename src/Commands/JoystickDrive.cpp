@@ -24,12 +24,17 @@ JoystickDrive::JoystickDrive(): Command() {
 
 // Called just before this Command runs the first time
 void JoystickDrive::Initialize() {
-
+    drivetrain = Robot::drivetrain;
+    driveJoystick = Robot::oi->getDriveJoystick();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void JoystickDrive::Execute() {
+    bool turbo = driveJoystick->GetRawButton(TURBO_BUTTON_NUMBER);
+    float straight = applyAxialDeadzone(driveJoystick->GetRawAxis(STRAIGHT_AXIS_NUMBER));
+    float turn = applyAxialDeadzone(driveJoystick->GetRawAxis(TURN_AXIS_NUMBER));
 
+    drivetrain->Drive(straight, turn, turbo);
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -39,11 +44,19 @@ bool JoystickDrive::IsFinished() {
 
 // Called once after isFinished returns true
 void JoystickDrive::End() {
-
+    Robot::drivetrain->StopMotors();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void JoystickDrive::Interrupted() {
+    End();
+}
 
+float JoystickDrive::applyAxialDeadzone(float input, float size) {
+    if (std::abs(input) < size) {
+        return 0;
+    }
+
+    return input;
 }
