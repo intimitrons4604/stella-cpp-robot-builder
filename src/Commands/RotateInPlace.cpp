@@ -26,26 +26,34 @@ RotateInPlace::RotateInPlace(bool counterClockWise, double rotationRate): Comman
 
 // Called just before this Command runs the first time
 void RotateInPlace::Initialize() {
-
+    drivetrain = Robot::drivetrain;
 }
 
 // Called repeatedly when this Command is scheduled to run
 void RotateInPlace::Execute() {
+    // Protect us from negative rotationRates
+    // Transform to a turnvalue - positive is CCW, negitave is CW rotation
+    float turnValue = m_counterClockWise ? std::abs(m_rotationRate) : - std::abs(m_rotationRate);
 
+    // Turn only, use turbo so desired rotationRate and motor output correspond exactly
+    drivetrain->Drive(0, turnValue, true)
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool RotateInPlace::IsFinished() {
-    return false;
+    // This command is fired while a button is held
+    // The command is constantly rescheduled while the button is pressed
+    // Note that motor safety will stop the rotation if the command is not rescheduled
+    return true;
 }
 
 // Called once after isFinished returns true
 void RotateInPlace::End() {
-
+    drivetrain->StopMotors();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void RotateInPlace::Interrupted() {
-
+    End();
 }
