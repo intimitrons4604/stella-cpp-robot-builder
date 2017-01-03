@@ -36,7 +36,7 @@ void RotateInPlace::Execute() {
     float turnValue = m_counterClockWise ? std::abs(m_rotationRate) : - std::abs(m_rotationRate);
 
     // Turn only, use turbo so desired rotationRate and motor output correspond exactly
-    drivetrain->Drive(0, turnValue, true)
+    drivetrain->Drive(0, turnValue, true);
 }
 
 // Make this return true when this Command no longer needs to run execute()
