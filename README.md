@@ -1,3 +1,6 @@
+# Stella C++ Drive Code (Command-based/RobotBuilder)
+[![Build Status](https://travis-ci.org/intimitrons4604/stella-cpp-robot-builder.svg?branch=master)](https://travis-ci.org/intimitrons4604/stella-cpp-robot-builder)
+
 # What is this?
 This repository contains a command-based robot implementation to *drive* Stella. The code outline was generated using [RobotBuilder](https://wpilib.screenstepslive.com/s/4485/m/26402). The required RobotBuilder file is in this repository, named `StellaCppRobotBuilder.yaml`. Open it with RobotBuilder and check it out.
 
