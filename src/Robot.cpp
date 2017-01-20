@@ -39,7 +39,7 @@ void Robot::RobotInit() {
  * You can use it to reset subsystems before shutting down.
  */
 void Robot::DisabledInit(){
-
+	// Boo!
 }
 
 void Robot::DisabledPeriodic() {
